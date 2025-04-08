@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rada Sai Mourya - Software Engineer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F172A',
+                        secondary: '#1E293B',
+                        accent: '#3B82F6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        wave: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '10%': { transform: 'rotate(14deg)' },
+                            '20%': { transform: 'rotate(-8deg)' },
+                            '30%': { transform: 'rotate(14deg)' },
+                            '40%': { transform: 'rotate(-4deg)' },
+                            '50%': { transform: 'rotate(10deg)' },
+                            '60%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(0deg)' },
+                        },
+                        typing: {
+                            'from': { width: '0' },
+                            'to': { width: '100%' },
+                        },
+                        blink: {
+                            '50%': { borderColor: 'transparent' },
+                        },
+                    },
+                    animation: {
+                        float: 'float 6s ease-in-out infinite',
+                        wave: 'wave 2s ease-in-out infinite',
+                        typing: 'typing 3.5s steps(40, end), blink .75s step-end infinite',
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass {
+                @apply bg-secondary/80 backdrop-blur-sm;
+            }
+            .btn {
+                @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
+            }
+            .btn-primary {
+                @apply bg-accent hover:bg-accent/90 text-white;
+            }
+            .animate-fadeIn {
+                animation: fadeIn 1s ease-in-out;
+            }
+            .animate-slideIn {
+                animation: slideIn 1s ease-out;
+            }
+            .animate-zoomIn {
+                animation: zoomIn 1s ease-out;
+            }
+            .animate-rotateIn {
+                animation: rotateIn 1s ease-out;
+            }
+            .skill-card {
+                @apply bg-primary/50 p-4 rounded-lg text-center transition-all duration-300;
+            }
+            .skill-card:hover {
+                @apply transform scale-110 bg-accent/20;
+            }
+            .project-card {
+                @apply bg-secondary rounded-lg overflow-hidden transition-all duration-300;
+            }
+            .project-card:hover {
+                @apply transform scale-105 shadow-lg shadow-accent/20;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes rotateIn {
+            from { transform: rotate(-10deg) scale(0.9); opacity: 0; }
+            to { transform: rotate(0) scale(1); opacity: 1; }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background-color: #3B82F6;
+            margin-left: 2px;
+            animation: blink 1s step-end infinite;
+        }
+    </style>
+</head>
+<body class="bg-primary text-white font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 glass z-50 animate-fadeIn">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold">Rada Sai Mourya</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-300 hover:text-accent transition-colors">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-accent transition-colors">About</a>
+                    <a href="#projects" class="text-gray-300 hover:text-accent transition-colors">Projects</a>
+                    <a href="#contact" class="text-gray-300 hover:text-accent transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20">
+        <div class="container mx-auto px-4 text-center">
+            <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-8 animate-fadeIn">
+                <img src="IMG_8039.PNG" alt="Rada Sai Mourya" class="w-full h-full object-cover">
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-slideIn">
+                Hi, I'm <span class="text-accent">Rada Sai Mourya</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 animate-slideIn" style="animation-delay: 0.2s">
+                Aspiring Full Stack Developer
+            </p>
+            <div class="flex justify-center space-x-4 mb-8">
+                <a href="mailto:radamourya7@gmail.com" class="text-gray-300 hover:text-accent transition-colors">
+                    <i class="fas fa-envelope text-2xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/MouryaRada" target="_blank" class="text-gray-300 hover:text-accent transition-colors">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+                <a href="tel:+917981262797" class="text-gray-300 hover:text-accent transition-colors">
+                    <i class="fas fa-phone text-2xl"></i>
+                </a>
+            </div>
+            <button class="btn btn-primary animate-slideIn" style="animation-delay: 0.4s">View My Work</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-secondary">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center animate-fadeIn">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-slideIn">
+                    <p class="text-lg text-gray-300 mb-6">
+                        A hardworking and dedicated individual consistently commits to my tasks with diligence and persistence. 
+                        I exhibit unwavering determination to achieve goals and consistently gives my best effort.
+                    </p>
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4">Education</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="font-semibold">B.Tech. in Computer Science</p>
+                                <p class="text-gray-300">Lovely Professional University | Phagwara, IN</p>
+                                <p class="text-gray-400">Aug '23 - Present</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Intermediate</p>
+                                <p class="text-gray-300">Narayana Junior College</p>
+                                <p class="text-gray-400">May'21 - Feb'23</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="skill-card animate-zoomIn" style="animation-delay: 0.2s">Python</div>
+                    <div class="skill-card animate-zoomIn" style="animation-delay: 0.4s">C, C++</div>
+                    <div class="skill-card animate-zoomIn" style="animation-delay: 0.6s">HTML/CSS</div>
+                    <div class="skill-card animate-zoomIn" style="animation-delay: 0.8s">JavaScript</div>
+                    <div class="skill-card animate-zoomIn" style="animation-delay: 1.0s">React.js</div>
+                    <div class="skill-card animate-zoomIn" style="animation-delay: 1.2s">DSA</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center animate-fadeIn">My Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card group animate-rotateIn" style="animation-delay: 0.2s">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="image.png" alt="AI Virtual Chatbot" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <a href="https://mouryaai.netlify.app/" target="_blank" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">AI Virtual Chatbot</h3>
+                        <p class="text-gray-300 mb-4">
+                            Created a website with an AI chatbot to help users find and book music concerts using natural language processing and Ticketmaster API integration.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-accent/20 rounded-full text-sm">HTML</span>
+                            <span class="px-2 py-1 bg-accent/20 rounded-full text-sm">Tailwind CSS</span>
+                            <span class="px-2 py-1 bg-accent/20 rounded-full text-sm">JavaScript</span>
+                            <span class="px-2 py-1 bg-accent/20 rounded-full text-sm">API</span>
+                        </div>
+                        <a href="https://mouryaai.netlify.app/" target="_blank" class="btn btn-primary w-full inline-block text-center">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card group animate-rotateIn" style="animation-delay: 0.4s">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="image1.png" alt="Portfolio Website" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <a href="https://mouryarada.netlify.app/" target="_blank" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Portfolio Website</h3>
+                        <p class="text-gray-300 mb-4">
+                            Designed and developed a personal portfolio website to showcase projects, skills, and experience in a clean and professional manner.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-accent/20 rounded-full text-sm">HTML</span>
+                            <span class="px-2 py-1 bg-accent/20 rounded-full text-sm">CSS</span>
+                            <span class="px-2 py-1 bg-accent/20 rounded-full text-sm">JavaScript</span>
+                        </div>
+                        <a href="https://mouryarada.netlify.app/" target="_blank" class="btn btn-primary w-full inline-block text-center">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card group animate-rotateIn" style="animation-delay: 0.6s">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="project3.jpg" alt="Gym Membership Website" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <a href="https://github.com/YourUsername/gym-website" target="_blank" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Gym Membership Website</h3>
+                        <p class="text-gray-300 mb-4">
+                            Developed a website for gym management with features for membership tracking and enhanced customer experience.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-accent/20 rounded-full text-sm">HTML</span>
+                            <span class="px-2 py-1 bg-accent/20 rounded-full text-sm">CSS</span>
+                        </div>
+                        <a href="https://github.com/YourUsername/gym-website" target="_blank" class="btn btn-primary w-full inline-block text-center">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-secondary">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center animate-fadeIn">Get In Touch</h2>
+            <div class="max-w-2xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div class="text-center">
+                        <p class="text-gray-300 mb-2">Email</p>
+                        <a href="mailto:radamourya7@gmail.com" class="text-accent hover:text-accent/80">radamourya7@gmail.com</a>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-gray-300 mb-2">Location</p>
+                        <p>Hyderabad, Telangana</p>
+                    </div>
+                </div>
+                <form class="space-y-6 animate-slideIn" style="animation-delay: 0.2s">
+                    <div>
+                        <label class="block text-gray-300 mb-2">Name</label>
+                        <input
+                            type="text"
+                            class="w-full bg-primary border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:border-accent transition-all duration-300"
+                        />
+                    </div>
+                    <div>
+                        <label class="block text-gray-300 mb-2">Email</label>
+                        <input
+                            type="email"
+                            class="w-full bg-primary border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:border-accent transition-all duration-300"
+                        />
+                    </div>
+                    <div>
+                        <label class="block text-gray-300 mb-2">Message</label>
+                        <textarea
+                            class="w-full bg-primary border border-gray-700 rounded-lg px-4 py-2 h-32 focus:outline-none focus:border-accent transition-all duration-300"
+                        ></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full hover:scale-105 transition-transform duration-300">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-primary">
+        <div class="container mx-auto px-4 text-center text-gray-400">
+            <p>© 2024 Rada Sai Mourya. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add floating animation to skill cards
+        document.querySelectorAll('.skill-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // Add hover effect to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'scale(1.05)';
+                card.style.boxShadow = '0 0 20px rgba(59, 130, 246, 0.2)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+                card.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html> 
