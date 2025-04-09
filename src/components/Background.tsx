@@ -16,7 +16,8 @@ const Background: React.FC = () => {
 
     // Create particles
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 2000;
+    // Adjust particle count based on screen size
+    const particlesCount = window.innerWidth < 768 ? 1000 : 2000;
     const posArray = new Float32Array(particlesCount * 3);
 
     for (let i = 0; i < particlesCount * 3; i++) {
@@ -25,7 +26,7 @@ const Background: React.FC = () => {
 
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
     const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.005,
+      size: window.innerWidth < 768 ? 0.008 : 0.005,
       color: 0xffffff,
       transparent: true,
       opacity: 0.8,
@@ -52,6 +53,9 @@ const Background: React.FC = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
+      
+      // Update particle size on resize
+      particlesMaterial.size = window.innerWidth < 768 ? 0.008 : 0.005;
     };
 
     window.addEventListener('resize', handleResize);
