@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Background from './components/Background';
+import HeroSection from './components/HeroSection';
 import VisitorCounter from './components/VisitorCounter';
 import { updateVisitorCount } from './firebase';
 
@@ -22,6 +23,7 @@ const App: React.FC = () => {
   return (
     <div className="relative min-h-screen">
       <Background />
+      <HeroSection />
       <VisitorCounter count={visitorCount} />
     </div>
   );
