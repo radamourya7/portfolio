@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 const HeroSection: React.FC = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
-    // Preload the image
     const img = new Image();
     img.src = '/IMG_8039.PNG';
     
@@ -21,52 +21,63 @@ const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8">
-      <div className="text-center w-full max-w-4xl mx-auto">
-        <div className="flex flex-col items-center mb-8">
-          <div className={`w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white/20 mb-6 animate-on-scroll transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}>
-            {!imageError ? (
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-gray-800 text-white">
+      <div className="container mx-auto px-4 py-16">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="md:w-1/2"
+          >
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+              Hi, I'm <span className="text-blue-400">Adam</span>
+            </h1>
+            <p className="text-xl md:text-2xl mb-6 text-gray-300">
+              A passionate software developer building modern web applications
+            </p>
+            <div className="flex gap-4">
+              <a
+                href="#projects"
+                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition-colors"
+              >
+                View Projects
+              </a>
+              <a
+                href="#contact"
+                className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-colors"
+              >
+                Contact Me
+              </a>
+            </div>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className={`md:w-1/2 flex justify-center transition-opacity duration-500 ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            {imageError ? (
+              <div className="text-red-500 text-center">
+                <p>Failed to load profile image</p>
+                <p className="text-sm">Please check the image path and file name</p>
+              </div>
+            ) : (
               <img
                 src="/IMG_8039.PNG"
-                alt="Rada Sai Mourya"
-                className="w-full h-full object-cover"
+                alt="Profile"
+                className="rounded-full w-64 h-64 object-cover border-4 border-blue-500 shadow-lg"
                 loading="eager"
                 onError={(e) => {
-                  console.error('Image failed to load in component');
+                  console.error('Image error:', e);
                   setImageError(true);
                 }}
               />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center bg-gray-800">
-                <span className="text-white">Image not available</span>
-              </div>
             )}
-          </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 animate-on-scroll">
-            Rada Sai Mourya
-          </h1>
-          <h2 className="text-xl sm:text-2xl md:text-3xl text-accent mb-6 sm:mb-8 animate-on-scroll">
-            Full Stack Engineer
-          </h2>
-        </div>
-        <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto px-4 animate-on-scroll">
-          Crafting digital experiences with modern web technologies
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 animate-on-scroll">
-          <a 
-            href="https://www.linkedin.com/in/radamourya7" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="btn btn-primary w-full sm:w-auto hover:scale-105 transition-transform duration-300"
-          >
-            View My Work
-          </a>
-          <a 
-            href="mailto:radamourya7@gmail.com" 
-            className="btn glass w-full sm:w-auto hover:scale-105 transition-transform duration-300"
-          >
-            Contact Me
-          </a>
+          </motion.div>
         </div>
       </div>
     </section>

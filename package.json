@@ -19,6 +19,7 @@
     "@types/three": "^0.161.2",
     "express": "^4.18.2",
     "firebase": "^10.8.0",
+    "framer-motion": "^12.6.3",
     "gsap": "^3.12.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

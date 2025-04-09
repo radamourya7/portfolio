@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, getDoc, setDoc, increment } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc, increment, enableIndexedDbPersistence } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -13,6 +13,15 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+// Enable offline persistence
+enableIndexedDbPersistence(db).catch((err) => {
+  if (err.code === 'failed-precondition') {
+    console.warn('Multiple tabs open, persistence can only be enabled in one tab at a time.');
+  } else if (err.code === 'unimplemented') {
+    console.warn('The current browser does not support persistence.');
+  }
+});
 
 // Function to update visitor count
 export const updateVisitorCount = async () => {
@@ -33,7 +42,7 @@ export const updateVisitorCount = async () => {
     return updatedDoc.data().count;
   } catch (error) {
     console.error('Error updating visitor count:', error);
-    return null;
+    throw error; // Re-throw the error to handle it in the component
   }
 };
 
@@ -49,6 +58,6 @@ export const getVisitorCount = async () => {
     return 0;
   } catch (error) {
     console.error('Error getting visitor count:', error);
-    return null;
+    throw error; // Re-throw the error to handle it in the component
   }
 }; 
