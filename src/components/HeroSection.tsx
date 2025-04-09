@@ -7,7 +7,7 @@ const HeroSection: React.FC = () => {
         <div className="flex flex-col items-center mb-8">
           <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white/20 mb-6 animate-on-scroll">
             <img
-              src="IMG_8039.png"
+              src="/IMG_8039.PNG"
               alt="Rada Sai Mourya"
               className="w-full h-full object-cover"
             />
