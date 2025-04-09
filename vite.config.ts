@@ -10,5 +10,12 @@ export default defineConfig({
   root: '.',
   build: {
     outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name][extname]'
+      }
+    }
   },
+  publicDir: 'public',
 }); 

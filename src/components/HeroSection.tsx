@@ -2,12 +2,22 @@ import React, { useEffect, useState } from 'react';
 
 const HeroSection: React.FC = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
     // Preload the image
     const img = new Image();
     img.src = '/IMG_8039.PNG';
-    img.onload = () => setImageLoaded(true);
+    
+    img.onload = () => {
+      console.log('Image loaded successfully');
+      setImageLoaded(true);
+    };
+    
+    img.onerror = (error) => {
+      console.error('Error loading image:', error);
+      setImageError(true);
+    };
   }, []);
 
   return (
@@ -15,12 +25,22 @@ const HeroSection: React.FC = () => {
       <div className="text-center w-full max-w-4xl mx-auto">
         <div className="flex flex-col items-center mb-8">
           <div className={`w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white/20 mb-6 animate-on-scroll transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}>
-            <img
-              src="/IMG_8039.PNG"
-              alt="Rada Sai Mourya"
-              className="w-full h-full object-cover"
-              loading="eager"
-            />
+            {!imageError ? (
+              <img
+                src="/IMG_8039.PNG"
+                alt="Rada Sai Mourya"
+                className="w-full h-full object-cover"
+                loading="eager"
+                onError={(e) => {
+                  console.error('Image failed to load in component');
+                  setImageError(true);
+                }}
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center bg-gray-800">
+                <span className="text-white">Image not available</span>
+              </div>
+            )}
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 animate-on-scroll">
             Rada Sai Mourya
